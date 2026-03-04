@@ -5,7 +5,6 @@
   environment.systemPackages = with pkgs; [
     vim
     wget
-    git
     curl
     btop
     neofetch
@@ -22,7 +21,19 @@
       plugins = [ "git" "sudo" "docker" "systemd" ];
     };
   };
-
+  programs.git = {
+    enable = true;
+    config = {
+       user = {
+          name = "Your Name";
+          email = "you@example.com";
+       };
+    
+       init = {
+          defaultBranch = "main";
+       };
+    };
+  };
   programs.starship.enable = true;
   programs.nix-ld.enable = true;
 
