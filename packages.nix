@@ -1,4 +1,4 @@
-{ pkgs, constants ... }:
+{ pkgs, constants, ... }:
 
 {
   # Системные пакеты
