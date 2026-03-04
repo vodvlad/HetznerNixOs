@@ -7,7 +7,7 @@
     wget
     curl
     btop
-    neofetch
+    fastfetch
     docker-compose
   ];
 
@@ -25,8 +25,8 @@
     enable = true;
     config = {
        user = {
-          name = "Your Name";
-          email = "you@example.com";
+          name = constatns.gitName;
+          email = constatns.email;
        };
     
        init = {
