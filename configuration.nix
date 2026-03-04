@@ -1,8 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, constants, ... }:
 
 {
   imports =
-    [ 
+    [
       ./hardware-configuration.nix
       ./vim-config.nix
       ./users.nix
@@ -12,15 +12,15 @@
 
   # Загрузчик GRUB
   boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda"; 
+  boot.loader.grub.device = "/dev/sda";
 
   # Сеть
   # networking.hostName = "nixos";
   # networking.networkmanager.enable = true;
 
   # Таймзона и локализация
-  # time.timeZone = "Europe/Kyiv";
+  time.timeZone = constants.timezone;
   # i18n.defaultLocale = "en_US.UTF-8";
 
-  system.stateVersion = "25.05"; 
+  system.stateVersion = "25.05";
 }

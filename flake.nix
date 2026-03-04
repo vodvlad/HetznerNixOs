@@ -13,6 +13,7 @@
           username = "vladyslav";
           email = "you@example.com";
           gitName = "Your Name";
+          timezone = "Europe/Luxembourg";
         };
       };
       modules = [ ./configuration.nix ]; # Импорт вашего основного файла
