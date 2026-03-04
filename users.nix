@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  users.users.${constatns.username} = {
+  users.users.${constants.username} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" ];
     openssh.authorizedKeys.keys = [
