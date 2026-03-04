@@ -8,12 +8,7 @@
     viAlias = true;
     vimAlias = true;
     withNodeJs = true;
-
-  # Аналогично для Python (нужен для coc-pyright)
-  withPython3 = true;
-  extraPython3Packages = (ps: with ps; [
-    pynvim
-  ]);
+    withPython3 = true;
     # Установка плагинов
     configure = {
       packages.myVimPackage = with pkgs.vimPlugins; {
