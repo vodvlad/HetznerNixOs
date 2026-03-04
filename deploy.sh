@@ -1,17 +1,13 @@
 #!/usr/bin/env bash
 
-# 1. Проверяем наличие hardware-configuration.nix
-if [ ! -f "hardware-configuration.nix" ]; then
-    echo "⚠️ hardware-configuration.nix не найден. Генерирую новый..."
-    sudo nixos-generate-config --show-hardware-config > hardware-configuration.nix
-    
-    # Меняем владельца на текущего пользователя (чтобы git мог с ним работать)
-    sudo chown $USER:users hardware-configuration.nix
-    
-    echo "✅ Файл сгенерирован."
-else
-    echo "ℹ️ hardware-configuration.nix уже существует. Пропускаю генерацию."
-fi
+# Удаляем старый файл, если он существует, чтобы избежать конфликтов прав
+[ -f "hardware-configuration.nix" ] && rm "hardware-configuration.nix"
+
+# Генерируем новый конфиг
+sudo nixos-generate-config --show-hardware-config > hardware-configuration.nix
+
+# Меняем владельца на текущего пользователя (чтобы git мог с ним работать)
+sudo chown $USER:users hardware-configuration.nix
 
 # 2. Добавляем файлы в индекс Git (критично для Flakes)
 # Даже если файл в .gitignore, команда 'git add -f' заставит Nix его увидеть
