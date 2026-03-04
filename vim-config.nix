@@ -1,17 +1,19 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    nodejs_20  # Или просто nodejs
-    python3    # Для coc-pyright
-    unzip      # Часто требуется плагинам для распаковки серверов
-  ];
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+    withNodeJs = true;
 
+  # Аналогично для Python (нужен для coc-pyright)
+  withPython3 = true;
+  extraPython3Packages = (ps: with ps; [
+    pynvim
+  ]);
     # Установка плагинов
     configure = {
       packages.myVimPackage = with pkgs.vimPlugins; {
@@ -19,16 +21,16 @@
           # Поиск и навигация
           fzf-vim
           nerdtree
-          
+
           # UI и тема
           embark-vim
           vim-airline
           vim-indent-guides
-          
+
           # Git
           vim-fugitive
           vim-gitgutter
-          
+
           # Код и автодополнение
           nerdcommenter
           coc-nvim
