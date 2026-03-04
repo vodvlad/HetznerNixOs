@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, constants ... }:
 
 {
   users.users.${constants.username} = {

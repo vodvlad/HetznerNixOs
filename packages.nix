@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, constants ... }:
 
 {
   # Системные пакеты
@@ -25,8 +25,8 @@
     enable = true;
     config = {
        user = {
-          name = constatns.gitName;
-          email = constatns.email;
+          name = constants.gitName;
+          email = constants.email;
        };
     
        init = {
